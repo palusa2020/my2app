@@ -2,15 +2,32 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  template: `
+    <div>
+        <input type="text" [(ngModel)]="userFilter.name" placeholder="name">
+        <ul>
+          <li *ngFor="let user of users | filter: userFilter.name| paginate: { itemsPerPage: 10, currentPage: p }">{{ user.name }}</li>
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+  `
 })
+ 
 export class AppComponent {
-  title = 'New World App';
-  collection=[];
-  constructor() {
-    for (let i = 1; i <= 100; i++) {
-      this.collection.push('item ' + i );
-    }
-  }
+  users: any[] = [
+{ name: 'John' }, { name: 'Jane' }, { name: 'Mario' },
+{ name: 'John' }, { name: 'Jane' }, { name: 'Mario' },
+{ name: 'John' }, { name: 'Jane' }, { name: 'Mario' },
+{ name: 'John' }, { name: 'Jane' }, { name: 'Mario' },
+{ name: 'John' }, { name: 'Jane' }, { name: 'Mario' },
+{ name: 'John' }, { name: 'Jane' }, { name: 'Mario' },
+{ name: 'John' }, { name: 'Jane' }, { name: 'Mario' },
+{ name: 'John' }, { name: 'Jane' }, { name: 'Mario' },
+{ name: 'John' }, { name: 'Jane' }, { name: 'Mario' },
+{ name: 'John' }, { name: 'Jane' }, { name: 'Mario' },
+{ name: 'John' }, { name: 'Jane' }, { name: 'Mario' },
+{ name: 'John' }, { name: 'Jane' }, { name: 'Mario' },
+{ name: 'John4' }, { name: 'Jane' }, { name: 'Mario' },
+{ name: 'John' }, { name: 'Jane' }, { name: 'Mario' }
+];
+  userFilter: any = { name: '' };
 }
