@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  title = 'New World App';
+  collection=[];
+  constructor() {
+    for (let i = 1; i <= 100; i++) {
+      this.collection.push('item ' + i );
+    }
+  }
 }
